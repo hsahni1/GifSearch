@@ -3,7 +3,7 @@
     $(document).ready(function() {
       /* 
       * The following two functions are used for making the API call using
-      * pure Javascript. I wouldn't worry about the details
+      * pure Javascript.
       */
 
       function encodeQueryData(data)
