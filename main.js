@@ -1,10 +1,7 @@
    var apikey = 'dc6zaTOxFJmzC';
 
     $(document).ready(function() {
-      /* 
-      * The following two functions are used for making the API call using
-      * pure Javascript.
-      */
+    
 
       function encodeQueryData(data)
       {
