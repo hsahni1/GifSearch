@@ -31,7 +31,6 @@
       * that we search for.
       */
     function getGif(query) {
-    console.log(query);
         query = query.replace(' ', '+');
         var params = { 'api_key': apikey, 'q': query};
         params = encodeQueryData(params);
@@ -43,6 +42,23 @@
                 for(var x=0; x<gifs.data.length-16; x++){
                 var showgif = gifs.data[x].images.fixed_width.url;
                 $("#image"+(x+1)).html("<img src='" + showgif + "'>");
+        };
+
+
+      })
+      }
+
+      function getStickers(query) {
+        query = query.replace(' ', '+');
+        var params = { 'api_key': apikey, 'q': query};
+        params = encodeQueryData(params);
+
+          httpGetAsync('http://api.giphy.com/v1/stickers/search?' + params, function(data) {
+              
+                var stickers = JSON.parse(data);
+                for(var x=0; x<stickers.data.length-16; x++){
+                var showsticker = stickers.data[x].images.fixed_width.url;
+                $("#image"+(x+1)).html("<img src='" + showsticker + "'>");
         };
 
 
@@ -62,11 +78,12 @@
        };
       })
       }
-               
+
+                 
       $("#submitButton").on("click", function() {
           var query = $("#inputQuery").val()
           if(query==""){
-                 $("p").html("OOPS! Enter GIF");
+                 $("p").html("OOPS! Enter some text");
              }
           else{
             $("p").html("TAADDAAAA!!");
@@ -75,6 +92,19 @@
           }
 
       });
+
+      $("#sticker").on("click", function() {
+        var query = $("#inputQuery").val()
+        if(query==""){
+               $("p").html("OOPS! Enter some text");
+           }
+        else{
+          $("p").html("TAADDAAAA!!");
+          $(".grid-container").css("display","grid")
+          getStickers(query);  
+        }
+
+    });
           $("#clearButton").on("click", function() {
         location.reload();
       });
@@ -84,4 +114,6 @@
         $(".grid-container").css("display","grid")
         getTrendingGif();   
       });
+
+
     })
