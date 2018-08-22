@@ -55,7 +55,7 @@
                 var stickers = JSON.parse(data);
                 for(var x=0; x<stickers.data.length-16; x++){
                 var showsticker = stickers.data[x].images.fixed_width.url;
-                $("#image"+(x+1)).html("<img src='" + showsticker + "'>"); //make it performance optimized
+                $("#image"+(x+1)).html("<img src='" + showsticker + "'>"); 
         };
 
 
